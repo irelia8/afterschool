@@ -53,8 +53,11 @@ public class UserController {
         stringResult.setCode(modifyResult);
         if (modifyResult == 1) {
             stringResult.setCode(102);
+            stringResult.setData("失败");
             stringResult.setMsg("教师不存在，不可插入");
         } else if (modifyResult == 0) {
+            stringResult.setCode(0);
+            stringResult.setData("成功");
             stringResult.setMsg("教师存在，可以插入");
         }
         return stringResult;
