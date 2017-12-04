@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzw.dao.IClassDao">
+
+    <!-- 简介页结果映射 -->
+    <resultMap type="com.zzw.bean.ClassIntro" id="classIntroBean" autoMapping="true">
+        <!--column指向数据库列名   property指向pojo对象中字段名-->
+        <result column="classname" property="classname"/>
+        <result column="teachername" property="teachername"/>
+        <result column="id" property="classid"/>
+    </resultMap>
+
+    <select id="GetAllClassIntroByGradeAndSubject" resultMap="classIntroBean" parameterType="String">
+           SELECT t.teachername,c.classname,c.id
+           FROM teacher AS t,class_info AS c
+           WHERE t.id = c.teacherid
+           AND c.grade = #{grade}
+           AND c.subject = #{subject}
+    </select>
+
+
+    <select id="GetClassInfoByCid" resultType="ClassInfo" parameterType="int">
+       SELECT *
+       FROM afterschool.class_info
+       WHERE id = #{cid}
+    </select>
+
+
+</mapper>

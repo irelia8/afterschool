@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzw.dao.IAdminDao">
+
+
+    <select id="usernameIsExist" resultType="String" parameterType="String">
+        SELECT username
+        FROM afterschool.user
+        WHERE username = #{isexistname}
+    </select>
+
+
+
+    <!-- GET三连 -->
+    <select id="getUserByPage" resultType="com.zzw.bean.User" parameterType="int">
+        SELECT *
+        FROM afterschool.user
+        WHERE state = 1
+        OR state = 2
+        LIMIT #{pagestart},#{pagesize}
+    </select>
+    <select id="getAdminByPage" resultType="com.zzw.bean.User">
+        SELECT *
+        FROM afterschool.user
+        WHERE state = 3
+        LIMIT #{pagestart},#{pagesize}
+    </select>
+    <select id="getTeacherByPage" resultType="com.zzw.bean.Teacher">
+        SELECT *
+        FROM afterschool.teacher
+        LIMIT #{pagestart},#{pagesize}
+    </select>
+
+    <!-- INSERT三连 -->
+    <insert id="addTeacher" parameterType="com.zzw.bean.Teacher" >
+        INSERT  INTO  afterschool.teacher(teachername, description, subject, phonenumber)
+        VALUES (#{teachername},#{description},#{subject},#{phonenumber})
+    </insert>
+    <insert id="addClassInfo" parameterType="com.zzw.bean.ClassInfo" >
+        INSERT  INTO  afterschool.class_info(teacherid, classname, grade, classcount, begintime, endtime, price)
+        VALUES (#{teacherid},#{classname},#{grade},#{classcount},#{begintime},#{endtime},#{price})
+    </insert>
+    <insert id="addAdmin" parameterType="com.zzw.bean.User" >
+        INSERT  INTO  afterschool.user(username, password, personname, email, phonenumber, state)
+        VALUES (#{username},#{password},#{personname},#{email},#{phonenumber},3)
+    </insert>
+
+    <!-- MODIFY三连 -->
+    <update id="modifyTeacherByTeacher" parameterType="com.zzw.bean.Teacher" >
+        UPDATE afterschool.Teacher
+        SET teachername=#{teachername},description=#{description},subject=#{subject},
+        phonenumber=#{phonenumber}
+        WHERE id=#{id}
+    </update>
+    <update id="modifyClassInfoByClassInfo" parameterType="com.zzw.bean.ClassInfo" >
+        UPDATE afterschool.class_info
+        SET teacherid=#{teacherid},classname=#{classname},grade=#{grade},
+        classcount=#{classcount},begintime=#{begintime},endtime=#{endtime}
+        ,price=#{price}
+        WHERE id=#{id}
+    </update>
+
+    <!-- DELETE三连 -->
+    <delete id="deleteClassInfoByCid" parameterType="int" >
+            DELETE
+            FROM afterschool.class_info
+            where id=#{cid}
+    </delete>
+    <delete id="deleteTeacherByTid" parameterType="int" >
+        DELETE
+        FROM afterschool.teacher
+        where id=#{tid}
+    </delete>
+
+    <!-- 获取数量一大堆 -->
+    <select id="getUserAmount" resultType="int">
+        SELECT count(id)
+        FROM afterschool.user
+        WHERE state = 1
+        OR state = 2
+    </select>
+    <select id="getTeacherAmount" resultType="int">
+        SELECT count(id)
+        FROM afterschool.user
+        WHERE state = 2
+    </select>
+    <select id="getAdminAmount" resultType="int">
+        SELECT count(id)
+        FROM afterschool.user
+        WHERE state = 3
+    </select>
+    <select id="getChineseAmount" resultType="int">
+        SELECT count(id)
+        FROM afterschool.class_info
+        WHERE subject = '语文'
+    </select>
+    <select id="getMathAmount" resultType="int">
+        SELECT count(id)
+        FROM afterschool.class_info
+        WHERE subject = '数学'
+    </select>
+    <select id="getEnglishAmount" resultType="int">
+        SELECT count(id)
+        FROM afterschool.class_info
+        WHERE subject = '英语'
+    </select>
+    <select id="getPhysicsAmount" resultType="int">
+        SELECT count(id)
+        FROM afterschool.class_info
+        WHERE subject = '物理'
+    </select>
+    <select id="getChemistryAmount" resultType="int">
+        SELECT count(id)
+        FROM afterschool.class_info
+        WHERE subject = '化学'
+    </select>
+    <select id="getBiologyAmount" resultType="int">
+        SELECT count(id)
+        FROM afterschool.class_info
+        WHERE subject = '生物'
+    </select>
+
+
+</mapper>

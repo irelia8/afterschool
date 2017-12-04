@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzw.dao.IUserDao">
+        <insert id="addUser" parameterType="com.zzw.bean.User" >
+            INSERT  INTO  afterschool.user(username, password, personname, email, phonenumber, state)
+            VALUES (#{username},#{password},#{personname},#{email},#{phonenumber},1)
+        </insert>
+
+        <select id="getUserByUid" parameterType="int" resultType="com.zzw.bean.User">
+            SELECT * FROM afterschool.user WHERE id = #{uid}
+        </select>
+
+        <select id="studentLogin" parameterType="String" resultType="User">
+            SELECT *
+            FROM afterschool.user
+            WHERE username = #{username}
+            AND state = 1
+        </select>
+
+
+        <select id="teacherLogin" parameterType="String" resultType="String">
+            SELECT password
+            FROM afterschool.user
+            WHERE username = #{username}
+            AND state = 2
+        </select>
+
+    <select id="adminLogin" parameterType="String" resultType="String">
+        SELECT password
+        FROM afterschool.user
+        WHERE username = #{username}
+        AND state = 3
+    </select>
+
+        <update id="modifyUserByUser" parameterType="com.zzw.bean.User" >
+            UPDATE afterschool.user
+            SET username=#{username},password=#{password},personname=#{personname},
+            email=#{email},phonenumber=#{phonenumber},state=#{state}
+            WHERE id=#{id};
+        </update>
+
+
+</mapper>

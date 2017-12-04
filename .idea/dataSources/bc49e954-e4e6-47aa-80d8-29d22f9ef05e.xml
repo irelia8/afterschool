@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="afterschool@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="afterschool">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="bookshoplk"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="labmanager"/>
+    <schema id="6" parent="1" name="mysql"/>
+    <schema id="7" parent="1" name="news"/>
+    <schema id="8" parent="1" name="performance_schema"/>
+    <schema id="9" parent="1" name="sakila"/>
+    <schema id="10" parent="1" name="test"/>
+    <schema id="11" parent="1" name="world"/>
+    <table id="12" parent="2" name="class_info"/>
+    <table id="13" parent="2" name="order_form"/>
+    <table id="14" parent="2" name="teacher"/>
+    <table id="15" parent="2" name="user"/>
+    <column id="16" parent="12" name="id">
+      <Position>1</Position>
+      <Comment>班级id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="17" parent="12" name="teacherid">
+      <Position>2</Position>
+      <Comment>班级对应的教师id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="18" parent="12" name="classname">
+      <Position>3</Position>
+      <DataType>varchar(40)|0</DataType>
+    </column>
+    <column id="19" parent="12" name="grade">
+      <Position>4</Position>
+      <Comment>年级</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="20" parent="12" name="subject">
+      <Position>5</Position>
+      <DataType>varchar(10)|0</DataType>
+      <DefaultExpression>&apos;科目&apos;</DefaultExpression>
+    </column>
+    <column id="21" parent="12" name="classcount">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="22" parent="12" name="begintime">
+      <Position>7</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="23" parent="12" name="endtime">
+      <Position>8</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="24" parent="12" name="price">
+      <Position>9</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <key id="25" parent="12" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="26" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="27" parent="13" name="ordertime">
+      <Position>2</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="28" parent="13" name="classid">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="29" parent="13" name="ispay">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="30" parent="13" name="userid">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="31" parent="13" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="32" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="14" name="teachername">
+      <Position>2</Position>
+      <DataType>varchar(22)|0</DataType>
+    </column>
+    <column id="34" parent="14" name="description">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="35" parent="14" name="subject">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="36" parent="14" name="phonenumber">
+      <Position>5</Position>
+      <DataType>varchar(11)|0</DataType>
+    </column>
+    <key id="37" parent="14" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="38" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="39" parent="15" name="username">
+      <Position>2</Position>
+      <DataType>varchar(22)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="15" name="password">
+      <Position>3</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="41" parent="15" name="personname">
+      <Position>4</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="42" parent="15" name="email">
+      <Position>5</Position>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="43" parent="15" name="phonenumber">
+      <Position>6</Position>
+      <DataType>varchar(11)|0</DataType>
+    </column>
+    <column id="44" parent="15" name="state">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="45" parent="15" name="PRIMARY">
+      <ColNames>id
+username</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

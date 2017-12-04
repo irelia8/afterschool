@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzw.dao.IOrderFormDao">
+
+    <select id="getOrderFormCidByUid" resultType="int" parameterType="int">
+        SELECT order_form.classid
+        FROM afterschool.order_form
+        WHERE userid = #{id}
+        AND ispay = 1
+    </select>
+
+
+    <select id="getShoppingCartCidByUid" resultType="int" parameterType="int">
+        SELECT order_form.classid
+        FROM afterschool.order_form
+        WHERE userid = #{id}
+        AND ispay = 0
+    </select>
+
+    <update id="payOrderFormByOid" parameterType="int" >
+        UPDATE afterschool.order_form
+        SET ispay = '1'
+        WHERE id=#{oid};
+    </update>
+
+    <update id="payShoppingCartByUid" parameterType="int" >
+        UPDATE afterschool.order_form
+        SET ispay = '1'
+        WHERE userid=#{uid};
+    </update>
+
+    <insert id="addOrderFormByOrderForm" parameterType="OrderForm" >
+        INSERT  INTO  afterschool.order_form(ordertime, classid, ispay, userid)
+        VALUES (#{ordertime},#{classid},#{ispay},#{userid})
+    </insert>
+
+
+</mapper>
