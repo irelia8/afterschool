@@ -94,22 +94,6 @@ public class UserController {
         stringResult.setMsg("没有此用户");
 
 
-
-        switch (loginResult) {
-            case 2:
-                stringResult.setCode(2);
-                stringResult.setMsg("密码错误");
-                break;
-            case 1:
-                stringResult.setCode(1);
-                stringResult.setMsg("没有此用户");
-                break;
-            case 0:
-                stringResult.setCode(0);
-                stringResult.setData(u);
-                stringResult.setMsg("登录成功");
-                break;
-        }
         return stringResult;
     }
 
