@@ -84,9 +84,13 @@ public class UserController {
                 stringResult.setMsg("密码错误");
             }
         }
-        //没有该用户返回1
-        stringResult.setCode(103);
-        stringResult.setMsg("没有此用户");
+
+        else if (u == null){
+                //没有该用户返回1
+                stringResult.setCode(103);
+                stringResult.setMsg("没有此用户");
+        }
+
 
 
         return stringResult;
@@ -113,9 +117,11 @@ public class UserController {
                 stringResult.setMsg("密码错误");
             }
         }
-        //没有该用户返回1
-        stringResult.setCode(103);
-        stringResult.setMsg("没有此用户");
+        else if (u == null){
+            //没有该用户返回1
+            stringResult.setCode(103);
+            stringResult.setMsg("没有此用户");
+        }
 
 
         return stringResult;
