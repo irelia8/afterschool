@@ -20,6 +20,7 @@ public class UserServiceImpl implements IUserService {
     private ITeacherDao teacherDao;
 
 
+
     public int addUser(User user) {
         return userDao.addUser(user);
     }
@@ -35,19 +36,10 @@ public class UserServiceImpl implements IUserService {
 
     }
 
-    public int teacherLogin(String username, String password) {
+    public User teacherLogin(String username, String password) {
 
-        String gettedPwd = userDao.teacherLogin(username);
-        if (gettedPwd != null) {
-            //密码错误返回2
-            if ((gettedPwd.equals(password))) {
-                return 0;
-            } else {
-                return 2;
-            }
-        }
-        //没有该用户返回1
-        return 1;
+        User gettedUser = userDao.teacherLogin(username);
+        return gettedUser;
 
     }
 

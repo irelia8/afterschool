@@ -9,7 +9,7 @@ public interface IUserService {
     int addUser(User user);
     User getUserByUid(int uid);
     User studentLogin(String username , String password);
-    int teacherLogin(String username , String password);
+    User teacherLogin(String username , String password);
     int modifyUserByUser(User u);
 
     int teacherIdIsExist(Integer tid);

@@ -21,7 +21,7 @@
 
 
         <select id="teacherLogin" parameterType="String" resultType="String">
-            SELECT password
+            SELECT *
             FROM afterschool.user
             WHERE username = #{username}
             AND state = 2

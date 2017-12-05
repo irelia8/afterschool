@@ -71,11 +71,6 @@ public class UserController {
         User u = userService.studentLogin(username, password);
         Result<User> stringResult = new Result<User>();
 
-
-
-
-
-        int loginResult = 1;
         if (u != null) {
 
             if ((u.getPassword().equals(password))) {
@@ -85,12 +80,12 @@ public class UserController {
                 stringResult.setMsg("登录成功");
             } else {
                 //密码错误返回2
-                stringResult.setCode(2);
+                stringResult.setCode(104);
                 stringResult.setMsg("密码错误");
             }
         }
         //没有该用户返回1
-        stringResult.setCode(1);
+        stringResult.setCode(103);
         stringResult.setMsg("没有此用户");
 
 
@@ -100,25 +95,29 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("teacherLogin")
-    public Result<String> teacherLogin(String username, String password) {
+    public Result<User> teacherLogin(String username, String password) {
 
-        int loginResult = userService.teacherLogin(username, password);
-        Result<String> stringResult = new Result<String>();
+        User u = userService.teacherLogin(username, password);
+        Result<User> stringResult = new Result<User>();
 
-        switch (loginResult) {
-            case 2:
-                stringResult.setCode(2);
-                stringResult.setMsg("密码错误");
-                break;
-            case 1:
-                stringResult.setCode(1);
-                stringResult.setMsg("没有此用户");
-                break;
-            case 0:
+        if (u != null) {
+
+            if ((u.getPassword().equals(password))) {
+                //成功返回0
                 stringResult.setCode(0);
+                stringResult.setData(u);
                 stringResult.setMsg("登录成功");
-                break;
+            } else {
+                //密码错误返回2
+                stringResult.setCode(104);
+                stringResult.setMsg("密码错误");
+            }
         }
+        //没有该用户返回1
+        stringResult.setCode(103);
+        stringResult.setMsg("没有此用户");
+
+
         return stringResult;
     }
 
